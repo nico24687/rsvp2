@@ -1,14 +1,19 @@
 import React from 'react'
+import GuestName from './GuestName'
 
 const Guest = (props) =>
   <li>
-    <span>{props.name}</span>
+    <GuestName
+       isEditing={props.isEditing}
+       handleNameEdits={(e) => props.setName(e.target.value)} >
+      {props.name}
+    </GuestName>
     <label>
       <input type="checkbox"
        checked={props.isConfirmed}
        onChange={props.handleConfirmation}  /> Confirmed
     </label>
-    <button>edit</button>
+    <button onClick={props.handleToggleEditing}>{props.isEditing ? "save" : "edit"}</button>
     <button>remove</button>
   </li>
 
