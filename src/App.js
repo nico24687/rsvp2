@@ -6,6 +6,7 @@ class App extends Component {
 
   state = {
     isFiltered: false,
+    pendingGuest: "",
     guests: [
       {
         name: "Treasure",
@@ -68,6 +69,28 @@ class App extends Component {
     })
   }
 
+  handleNameInput = (event) => {
+    this.setState({
+      pendingGuest: event.target.value
+    })
+  }
+
+  handleSubmit = (event) => {
+    event.preventDefault()
+    this.setState({
+      guests: [
+        {
+          name: this.state.pendingGuest,
+          isConfirmed: false,
+          isEditing: false
+        },
+        ...this.state.guests
+      ],
+      pendingGuest: ""
+    })
+  }
+
+
   getTotalInvited = () => {
     this.state.guests.length
   }
@@ -82,8 +105,13 @@ class App extends Component {
           <h1>RSVP</h1>
           <p>A Treehouse App</p>
           <form>
-            <input type="text" value="Safia" placeholder="Invite Someone"/>
-              <button type="submit" name="submit" value="submit">Submit</button>
+            <input
+              type="text" 
+              value={this.state.pendingGuest} 
+              onChange={this.handleNameInput}
+              placeholder="Invite Someone"
+            />
+              <button type="submit" name="submit" value="submit" onClick={this.handleSubmit} >Submit</button>
         </form>
       </header>
           <div className="main">
