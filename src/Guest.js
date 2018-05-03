@@ -14,7 +14,7 @@ const Guest = (props) =>
        onChange={props.handleConfirmation}  /> Confirmed
     </label>
     <button onClick={props.handleToggleEditing}>{props.isEditing ? "save" : "edit"}</button>
-    <button>remove</button>
+    <button onClick={props.handleRemoveGuest}>remove</button>
   </li>
 
 

@@ -20,6 +20,7 @@ const GuestList = (props) =>
         handleConfirmation={() => props.toggleConfirmationAt(index)}
         handleToggleEditing={() => props.toggleEditingAt(index)}
         setName={(text) => props.setNameAt(text, index) }
+        handleRemoveGuest={() => props.removeGuestAt(index)}
       />
     )}
   </ul>

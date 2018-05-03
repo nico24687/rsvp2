@@ -59,6 +59,15 @@ class App extends Component {
     this.toggleGuestPropertyAt("isConfirmed", index)
   }
 
+  removeGuestAt = (index) => {
+    this.setState({
+      guests: [
+        ...this.state.guests.slice(0,index),
+        ...this.state.guests.slice(index + 1)
+      ]
+    })
+  }
+
   toggleEditingAt = (index) => {
     this.toggleGuestPropertyAt("isEditing", index)
   }
@@ -148,6 +157,7 @@ class App extends Component {
             toggleEditingAt={this.toggleEditingAt}
             setNameAt={this.setNameAt}
             isFiltered={this.state.isFiltered}
+            removeGuestAt={this.removeGuestAt}
           />
       </div>
     </div>
